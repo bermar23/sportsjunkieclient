@@ -14,7 +14,6 @@
 
 @section('main-content')
     <div class='row'>
-
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
