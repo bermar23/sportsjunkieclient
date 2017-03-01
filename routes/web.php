@@ -62,3 +62,58 @@ Route::group(['middleware' => 'auth'], function () {
     #adminlte_routes
 });
 
+
+
+// V1 API routes...
+Route::group(['prefix' => 'api/v1'], function () {
+
+    // get outlets
+    Route::get('/outlets/{id?}', function($id = null) {
+        $fields = array('id', 'code', 'name', 'description', 'coordinates');
+        if ($id == null) {
+            $outlets = App\Outlet::all($fields);
+        } else {
+            $outlets = App\Outlet::find($id, $fields);
+        }
+        return Response::json(array(
+            'error' => false,
+            'outlets' => $outlets,
+            'status_code' => 200
+        ));
+    });
+
+    // store outlets
+    Route::post('/outlets/store', function(Request $request) {
+
+        $outlet = new App\Outlet;
+        $outlet->code = $outlet->getNewCode();
+        $outlet->name = $request->name;
+        $outlet->coordinates = $request->coordinates;
+        $outlet->description = $request->description;
+        $outlet->created_by = session('user_id');
+        $outlet->save();
+
+        return Response::json(array(
+            'error' => false,
+            'status_code' => 200
+        ));
+    });
+
+    // update outlets
+    Route::post('/outlets/update', function(Request $request) {
+
+        $outlet = Outlet::find($request->id);
+        $outlet->code = $request->code;
+        $outlet->name = $request->name;
+        $outlet->coordinates = $request->coordinates;
+        $outlet->description = $request->description;
+        $outlet->updated_by = session('user_id');
+        $outlet->save();
+
+        return Response::json(array(
+            'error' => false,
+            'status_code' => 200
+        ));
+    });
+
+});

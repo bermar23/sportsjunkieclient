@@ -33,7 +33,6 @@ class OutletController extends Controller
 	public function create()
 	{
 		$data['page_title'] = 'Outlet';
-
 		return view('outlet.new')->with($data);
 	}
 
@@ -50,7 +49,10 @@ class OutletController extends Controller
 		]);
 
 		$outlet = new Outlet;
-		$outlet->code = $outlet->getNewCode();
+
+		$newCode = $this->getNewCode();
+
+		$outlet->code = $newCode;
 		$outlet->name = $request->name;
 		$outlet->coordinates = $request->coordinates;
 		$outlet->description = $request->description;
@@ -86,7 +88,7 @@ class OutletController extends Controller
 	{
 		$data['page_title'] = 'Outlet';
 
-		$data['outlet'] = Outlet::where('id', '=', $id)->firstOrFail();;
+		$data['outlet'] = Outlet::where('id', '=', $id)->firstOrFail();
 
 		return view('outlet.show')->with($data);
 	}
@@ -192,6 +194,19 @@ class OutletController extends Controller
 				return '<a type="button" class="btn btn-xs btn-info" href="'.url('outlet/show/'.$data->id).'">show</a> | <button class="btn btn-xs btn-default" onclick="alert(\'Add showing!!!\');"><span class="fa fa-plus"></span> showing</button> | <a type="button" class="btn btn-xs btn-default" href="'.url('outlet/page/new/'.$data->id).'"><span class="fa fa-plus"></span> page</a>';
 			})
 			->make(true);
+	}
+
+	public function getNewCode(){
+		$codePrefix = 'O';
+		$codeLength = 6;
+		$lastCode = Outlet::orderby('ID', 'desc')->first();
+		if(!isset($lastCode->code)){
+			$lastCode = '';
+		}else{
+			$lastCode = $lastCode->code;
+		}
+		$newCode = getNewCode($lastCode, $codePrefix, $codeLength);
+		return $newCode;
 	}
 
 }

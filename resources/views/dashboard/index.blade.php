@@ -214,7 +214,7 @@
 <script src="/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <script src="/plugins/jvectormap/jquery-jvectormap-asia-mill.js"></script>
-<script src="/plugins/jvectormap/jquery-jvectormap-asia-usa-en.js"></script>
+<script src="/plugins/jvectormap/jquery-jvectormap-usa-en.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         /* jVector Maps

@@ -36,12 +36,33 @@
             <li class="active"><a href="{{ url('/dashboard') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
             <li><a href="{{ url('/user/profile') }}"><i class="fa fa-user"></i> <span>Profile</span></a></li>
             <li><a href="{{ url('/calendar') }}"><i class="fa fa-calendar"></i> <span>Celendar</span></a></li>
+            <li><a href="{{ url('/account') }}"><i class="fa fa-dollar"></i> <span>My Account</span></a></li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-share"></i> <span>Outlet</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                <a href="#"><i class="fa fa-map-marker"></i> <span>My Outlets</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('/outlet/new') }}"><i class="fa fa-circle-o"></i> New</a></li>
-                    <li><a href="{{ url('/outlet') }}"><i class="fa fa-circle-o"></i> My outlets</a></li>
-                    <li><a href="{{ url('/showings') }}"><i class="fa fa-circle-o"></i> Showing</a></li>
+                    <li><a href="{{ url('/outlet/new') }}"><i class="fa fa-file-o"></i> New</a></li>
+                    <li><a href="{{ url('/outlet') }}"><i class="fa fa-navicon"></i> All</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-tv"></i> <span>My Showing</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('/showing/new') }}"><i class="fa fa-file-o"></i> New</a></li>
+                    <li><a href="{{ url('/showing') }}"><i class="fa fa-navicon"></i> All</a></li>
+                </ul>
+            </li>
+            <!--<li class="treeview">
+                <a href="#"><i class="fa fa-plane"></i> <span>My Travel</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('/travel/new') }}"><i class="fa fa-file-o"></i> New</a></li>
+                    <li><a href="{{ url('/travel') }}"><i class="fa fa-navicon"></i> All</a></li>
+                </ul>
+            </li>-->
+            <li class="treeview">
+                <a href="#"><i class="fa fa-money"></i> <span>My Merchandise</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('/merchandise/new') }}"><i class="fa fa-file-o"></i> New</a></li>
+                    <li><a href="{{ url('/merchandise') }}"><i class="fa fa-navicon"></i> All</a></li>
                 </ul>
             </li>
 

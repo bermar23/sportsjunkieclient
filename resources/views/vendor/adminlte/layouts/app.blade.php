@@ -31,8 +31,8 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="skin-yellow sidebar-mini">
-<div id="app">
+<body class="skin-yellow sidebar-mini" >
+<div id="app" ng-app="app">
     <div class="wrapper">
 
     @include('adminlte::layouts.partials.mainheader')

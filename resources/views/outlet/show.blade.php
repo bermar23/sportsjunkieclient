@@ -13,6 +13,9 @@
 @endsection
 
 @section('main-content')
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
     <div class='row'>
         @if (count($errors) > 0)
             <div class="alert alert-danger">
@@ -322,7 +325,12 @@
                     </div>
                     <!-- /.tab-pane -->
 
-                    <div class="active tab-pane" id="settings">
+                    <div class="active tab-pane" id="settings" ng-app="outletSettingApp" ng-controller="myCtrl">
+                        <ul>
+                            <li ng-repeat="x in myData">
+                                <% x.id %> - <% x.name %>
+                            </li>
+                        </ul>
                         <form role="form" class="form-horizontal" method="post" action="{{ url('outlet/update') }}">
 
 
@@ -384,6 +392,21 @@
 
     </div><!-- /.row -->
 
+    <script>
+        var outletSettingApp = angular.module('outletSettingApp', []);
+        outletSettingApp.config(function ($interpolateProvider) {
+
+            $interpolateProvider.startSymbol('<%');
+            $interpolateProvider.endSymbol('%>');
+
+        });
+
+        outletSettingApp.controller('myCtrl', function($scope, $http) {
+            $http.get("../../api/v1/outlets").then(function(response) {
+                $scope.myData = response.data.outlets;
+            });
+        });
+    </script>
 
 @endsection
 

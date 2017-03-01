@@ -32,8 +32,4 @@ class Outlet extends Model
 		'name',
 		'description'
 	];
-	
-	public function getNewCode(){
-		return 'c77777';
-	}
 }
